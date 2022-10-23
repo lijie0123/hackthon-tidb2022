@@ -56,8 +56,4 @@ In this section we show the open source projects for cryptocurrencies, including
 
 ## Sponsors
 
-<div align="center">
-  <a href="https://en.pingcap.com/tidb-cloud/?utm_source=ossinsight&utm_medium=referral">
-    <img src="/static/img/tidb-cloud-logo-w.png" height=50 />
-  </a>
-</div>
+- tiDB
