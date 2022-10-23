@@ -1,0 +1,67 @@
+# # Global variables are applied to all deployments and used as the default value of
+# # the deployments if a specific deployment value is missing.
+global:
+  # # The user who runs the tidb cluster.
+  user: "admin"
+  # # group is used to specify the group name the user belong to if it's not the same as user.
+  # group: "tidb"
+  # # SSH port of servers in the managed cluster.
+  ssh_port: 22
+  # # Storage directory for cluster deployment files, startup scripts, and configuration files.
+  deploy_dir: "/tidb-deploy"
+  # # TiDB Cluster data storage directory
+  data_dir: "/tidb-data"
+  # # Supported values: "amd64", "arm64" (default: "amd64")
+  arch: "amd64"
+# # Monitored variables are applied to all the machines.
+# monitored:
+#   # # The communication port for reporting system information of each node in the TiDB cluster.
+#   node_exporter_port: 9100
+#   # # Blackbox_exporter communication port, used for TiDB cluster port monitoring.
+#   blackbox_exporter_port: 9115
+
+# # Server configs are used to specify the configuration of PD Servers.
+pd_servers:
+  # # The ip address of the PD Server.
+  - host: 172.31.11.106
+  - host: 172.31.14.172
+  - host: 172.31.3.206
+
+# # Server configs are used to specify the configuration of TiDB Servers.
+tidb_servers:
+  # # The ip address of the TiDB Server.
+  - host: 172.31.11.106
+
+# # Server configs are used to specify the configuration of TiKV Servers.
+tikv_servers:
+  - host: 172.31.11.106
+  - host: 172.31.14.172
+  - host: 172.31.3.206
+
+# Server configs are used to specify the configuration of TiFlash Servers.
+tiflash_servers:
+  - host: 172.31.7.69
+   
+
+# Server configs are used to specify the configuration of Prometheus Server.  
+monitoring_servers:
+  # # The ip address of the Monitoring Server.
+  - host: 172.31.14.172
+
+# Server configs are used to specify the configuration of Grafana Servers.  
+grafana_servers:
+  # # The ip address of the Grafana Server.
+  - host: 172.31.14.172
+# # Server configs are used to specify the configuration of Alertmanager Servers.  
+alertmanager_servers:
+  # # The ip address of the Alertmanager Server.
+  - host: 172.31.14.172
+
+# tiflash: n4
+# tidb: n1
+# monitor: n2
+# metabase: n3
+# dataease: n4
+
+
+
