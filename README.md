@@ -14,7 +14,12 @@
 It also provides a bunch of utensils which can show different perspectives for different users, which will be detailed next section.
 </p>
 
-## Magic Dashboard👁️
+## What is the OSCI?
+
+_Well, the most POWERFUL_ tool to let you get into Blockchains.
+
+
+## Feature1: Magic Dashboard👁️
 
 经过筛选的数据，分不同目的，分区块展示。
 
@@ -48,7 +53,7 @@ In this section we show the open source projects for cryptocurrencies, including
 
 在这个板块，我们展示了加密货币的开源项目，包括这个项目在 Github 上的 Star 数量，Fork 数量。根据这些可以获取到的公开数据，我们通过一套算法，计算出该加密货币的可靠性。
 
-## API for using
+## Feature2: API for using
 
 后续会陆续开放各种 Blockchain 上获取数据的 API。
 
