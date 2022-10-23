@@ -57,22 +57,17 @@ In this section we show the open source projects for cryptocurrencies, including
 
 后续会陆续开放各种 Blockchain 上获取数据的 API。
 
-- just a tiny example:
+## just a tiny example:
 
-by running the code right below,
+- /api/btc/blocks/ : get bitcoin block by it's unique hash
 
 ```sh
 curl http://ec2-35-77-75-24.ap-northeast-1.compute.amazonaws.com/api/btc/blocks/<block hash>
 
-```
-
-and then, you can get data like this:
-
-```
 {"bits":"1707e772","coinbase_param":"03d3970b1b4d696e656420627920416e74506f6f6c383439b201af030b8a11abfabe6d6d314c2d5c03754fcee7344d9c3a7f6945f2a34a1d62b9d2aa3c010adb5757634002000000000000000000ef87bb00000000000000","hash":"00000000000000000006ba2a50ae990822cf8fbd4b22398b914703c0275e6754","merkle_root":"7478debd909563ad3a9c62401b7ba11436338bd779e5d1affce2e756f7fa27ec","nonce":"9269a854","number":759763,"size":305490,"stripped_size":175829,"timestamp":"2022-10-22 02:38:17","transaction_count":547,"version":705691648,"weight":832977}
 ```
 
-- you can even use sql, only DQL is supported
+- /api/query : you can even use sql, only DQL is supported
 ```sh
 curl http://ec2-35-77-75-24.ap-northeast-1.compute.amazonaws.com/api/query -X POST -H 'Content-Type:application/json' -d '{"sql":"select * from bitcoin_block limit 2;"}'
 
