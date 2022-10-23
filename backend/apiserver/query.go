@@ -124,15 +124,20 @@ func (s QueryService) GetBlockByHash(ctx context.Context, hash string) (map[stri
 func convertValues(values []any) (rt []any, err error) {
 	for _, v := range values {
 
-		x := v.([]byte)
-
-		if nx, ok := strconv.ParseFloat(string(x), 64); ok == nil {
-			rt = append(rt, nx)
-		} else if b, ok := strconv.ParseBool(string(x)); ok == nil {
-			rt = append(rt, b)
-		} else if "string" == fmt.Sprintf("%T", string(x)) {
-			rt = append(rt, string(x))
-		} else {
+		switch x := v.(type) {
+		case []byte:
+			if nx, ok := strconv.ParseFloat(string(x), 64); ok == nil {
+				rt = append(rt, nx)
+			} else if b, ok := strconv.ParseBool(string(x)); ok == nil {
+				rt = append(rt, b)
+			} else if "string" == fmt.Sprintf("%T", string(x)) {
+				rt = append(rt, string(x))
+			} else {
+				return nil, fmt.Errorf("Failed on if for type %T of %v", x, x)
+			}
+		case int64, int, int32:
+			rt = append(rt, x)
+		default:
 			return nil, fmt.Errorf("Failed on if for type %T of %v", x, x)
 		}
 	}
