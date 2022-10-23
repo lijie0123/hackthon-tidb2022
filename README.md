@@ -56,8 +56,8 @@ In this section we show the open source projects for cryptocurrencies, including
 
 by running the code right below,
 
-```sql
-http://ec2-35-77-75-24.ap-northeast-1.compute.amazonaws.com/api/btc/blocks/00000000000000000006ba2a50ae990822cf8fbd4b22398b914703c0275e6754
+```sh
+curl http://ec2-35-77-75-24.ap-northeast-1.compute.amazonaws.com/api/btc/blocks/<block hash>
 
 ```
 
@@ -65,6 +65,13 @@ and then, you can get data like this:
 
 ```
 {"bits":"1707e772","coinbase_param":"03d3970b1b4d696e656420627920416e74506f6f6c383439b201af030b8a11abfabe6d6d314c2d5c03754fcee7344d9c3a7f6945f2a34a1d62b9d2aa3c010adb5757634002000000000000000000ef87bb00000000000000","hash":"00000000000000000006ba2a50ae990822cf8fbd4b22398b914703c0275e6754","merkle_root":"7478debd909563ad3a9c62401b7ba11436338bd779e5d1affce2e756f7fa27ec","nonce":"9269a854","number":759763,"size":305490,"stripped_size":175829,"timestamp":"2022-10-22 02:38:17","transaction_count":547,"version":705691648,"weight":832977}
+```
+
+- you can even use sql, only DQL is supported
+```sh
+curl http://ec2-35-77-75-24.ap-northeast-1.compute.amazonaws.com/api/query -X POST -H 'Content-Type:application/json' -d '{"sql":"select * from bitcoin_block limit 2;"}'
+
+{"schema":[{"name":"hash","type":"VARCHAR"},{"name":"size","type":"BIGINT"},{"name":"stripped_size","type":"BIGINT"},{"name":"weight","type":"BIGINT"},{"name":"number","type":"BIGINT"},{"name":"version","type":"BIGINT"},{"name":"merkle_root","type":"VARCHAR"},{"name":"timestamp","type":"TIMESTAMP"},{"name":"nonce","type":"VARCHAR"},{"name":"bits","type":"VARCHAR"},{"name":"coinbase_param","type":"TEXT"},{"name":"transaction_count","type":"BIGINT"}],"rows":[["00000000000000000006ba2a50ae990822cf8fbd4b22398b914703c0275e6754",305490,175829,832977,759763,705691648,"7478debd909563ad3a9c62401b7ba11436338bd779e5d1affce2e756f7fa27ec","2022-10-22 02:38:17","9269a854","1707e772","03d3970b1b4d696e656420627920416e74506f6f6c383439b201af030b8a11abfabe6d6d314c2d5c03754fcee7344d9c3a7f6945f2a34a1d62b9d2aa3c010adb5757634002000000000000000000ef87bb00000000000000",547],["000000000000000000056822fe5070ca1ccb1e2493beb81ffef4e11243eae118",444317,233527,1144898,759764,536911872,"32c1bf803891dd9fc8fc4253a3525e3e28cafacc04fe1f414a7a5d5a449f09cf","2022-10-22 02:43:50","46dc69c6","1707e772","03d4970b04e65853632f466f756e6472792055534120506f6f6c202364726f70676f6c642f0a7e423700000abd72a92900",676]]}
 ```
 
 ## Development
