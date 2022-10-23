@@ -1,14 +1,10 @@
 <h1 align="center">Open Source Crypto Insight!</h1>
 
-![](https://raw.githubusercontent.com/lenny-mo/PictureUploadFolder/main/cryptoGIF.gif)
-
 ![demo](https://raw.githubusercontent.com/lenny-mo/PictureUploadFolder/main/Screen%20Shot%202022-10-23%20at%2011.48.10.png)
 
 ![](https://raw.githubusercontent.com/lenny-mo/PictureUploadFolder/main/Screen%20Shot%202022-10-23%20at%2012.05.58.png)
 
 ![](https://raw.githubusercontent.com/lenny-mo/PictureUploadFolder/main/Screen%20Shot%202022-10-23%20at%2011.47.20.png)
-
-\*_.gif_ 重要的
 
 <p align="center">
 <b>Open Source Crypto Insight</b> analyzes billions of data of crypto and gives a professional perspective based on these data. 
