@@ -12,7 +12,7 @@ _Well, the most POWERFUL_ tool to let you get into Blockchains.
 
 
 <p align="center">
-<b>Open Source Crypto Insight</b> analyzes billions of data of crypto and gives a professional perspective based on these data. 
+<b>Open Source Crypto Insight(OSCI)</b> analyzes billions of data of crypto and gives a professional perspective based on these data. 
 </p>
 
 <p align="center">
