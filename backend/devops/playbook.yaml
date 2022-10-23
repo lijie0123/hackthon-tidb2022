@@ -1,0 +1,116 @@
+- name: init
+  hosts: data
+  become: true
+  tasks:
+  - name: Remount root add nodelalloc
+    tags:
+    - remount
+    ansible.posix.mount:
+      path: /
+      state: remounted
+      opts: nodelalloc
+  - name: mkfs
+    filesystem: 
+      dev: /dev/xvdb
+      fstype: ext4
+  - name: mount
+    tags:
+    - mount
+    ansible.posix.mount:
+        path: /tidb-data
+        src: /dev/xvdb
+        state: mounted
+        fstype: ext4
+  - name: deploy-dir
+    file:
+      name: "/tidb-deploy"
+      state: directory
+      owner: 'admin'
+      mode: 0755
+      group: 'admin'
+  - name: sysctl somax
+    tags:
+    - sysctl
+    ansible.posix.sysctl:
+      name: net.core.somaxconn
+      value: '32768'
+      state: present
+  - name: sysctl tcpsynccookies
+    tags:
+    - sysctl
+    ansible.posix.sysctl:
+      name: net.ipv4.tcp_syncookies
+      value: '0'
+      state: present
+  - name: sysctl swap
+    tags:
+    - sysctl
+    ansible.posix.sysctl:
+      name: vm.swappiness
+      value: '0'
+      state: present
+  - name: limit sf
+    tags:
+    - limit
+    pam_limits:
+      domain: admin
+      limit_type: soft
+      limit_item: nofile
+      value: 1000000
+  - name: limit hf
+    tags:
+    - limit
+    pam_limits:
+      domain: admin
+      limit_type: hard
+      limit_item: nofile
+      value: 1000000
+  - name: limit stack
+    tags:
+    - limit
+    pam_limits:
+      domain: admin
+      limit_type: soft
+      limit_item: stack
+      value: 10240
+  - name: limit core
+    tags:
+    - limit
+    pam_limits:
+      domain: admin
+      limit_type: soft
+      limit_item: core
+      value: unlimited
+- name: all
+  hosts: all
+  become: true
+  tasks:
+  - name: apt install
+    tags:
+    - apt
+    ansible.builtin.apt:
+      pkg: 
+      - openjdk-17-jre
+      - netcat
+      - tmux
+      - ntp
+      - irqbalance
+      - numactl
+      state: present
+      update_cache: yes
+
+- name: ctl
+  hosts: control
+  tags:
+  - ctl
+  tasks:
+  - name: tiup
+    tags:
+    - tiup
+    shell: curl --proto '=https' --tlsv1.2 -sSf https://tiup-mirrors.pingcap.com/install.sh | sh
+  - name: ssh
+    ansible.builtin.copy:
+      src: ~/.ssh/aws_rsa.pem
+      dest: ~/.ssh/id_rsa
+      mode: '0400'
+

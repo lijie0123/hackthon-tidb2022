@@ -1,0 +1,21 @@
+data:
+  hosts:
+    n1:
+      ansible_host: "ec2-35-78-190-37.ap-northeast-1.compute.amazonaws.com"
+    n2:
+      ansible_host: "ec2-18-179-204-53.ap-northeast-1.compute.amazonaws.com"
+    n3:
+      ansible_host: "ec2-13-230-149-127.ap-northeast-1.compute.amazonaws.com"
+    n4:
+      ansible_host: "ec2-3-115-22-32.ap-northeast-1.compute.amazonaws.com"
+  vars:
+    ansible_ssh_private_key_file: "~/.ssh/aws_rsa.pem"
+    ansible_user: admin
+control:
+  hosts:
+    n0:
+        ansible_host: "ec2-35-77-75-24.ap-northeast-1.compute.amazonaws.com"
+  vars:
+    ansible_ssh_private_key_file: "~/.ssh/aws_rsa.pem"
+    ansible_user: admin
+
