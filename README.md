@@ -57,7 +57,7 @@ In this section we show the open source projects for cryptocurrencies, including
 by running the code right below,
 
 ```sql
-curl http://localhost:1323/api/btc/blocks/00000000000000000006ba2a50ae990822cf8fbd4b22398b914703c0275e6754
+http://ec2-35-77-75-24.ap-northeast-1.compute.amazonaws.com/api/btc/blocks/00000000000000000006ba2a50ae990822cf8fbd4b22398b914703c0275e6754
 
 ```
 
