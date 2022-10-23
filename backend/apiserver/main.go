@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"errors"
 	"fmt"
+	"github.com/labstack/echo/v4/middleware"
 	"net/http"
 	"net/url"
 	"os"
@@ -22,6 +23,7 @@ func main() {
 	}
 	q := QueryService{db: db}
 	apis := e.Group("/api")
+	apis.Use(middleware.AddTrailingSlash())
 	apis.POST("/query", func(c echo.Context) error {
 		req := QueryReq{}
 		err := c.Bind(&req)
@@ -37,6 +39,19 @@ func main() {
 			return err
 		}
 		return c.JSON(200, query)
+	})
+	apis.GET("/btc/blocks/:hash", func(c echo.Context) error {
+		hash := c.Param("hash")
+		rt, err := q.GetBlockByHash(c.Request().Context(), hash)
+		if err != nil {
+			if errors.Is(err, BadRequest) {
+				return c.String(400, err.Error())
+			} else if errors.Is(err, NotFound) {
+				return c.String(404, err.Error())
+			}
+			return err
+		}
+		return c.JSON(200, rt)
 	})
 	static := Static{base: os.Getenv("STATIC")}
 	e.GET("/*", static.Serve)
