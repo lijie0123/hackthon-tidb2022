@@ -50,6 +50,14 @@ In this section we show the open source projects for cryptocurrencies, including
 
 ## API for using
 
+后续会陆续开放各种 Blockchain 上获取数据的 API。
+
+- just a tiny example:
+
+```sql
+curl http://ec2-35-77-75-24.ap-northeast-1.compute.amazonaws.com/api/query -X POST -d '{"sql":"show tables;"}' -H 'Content-Type:application/json'
+```
+
 ## Development
 
 - you can click [here](http://ec2-35-77-75-24.ap-northeast-1.compute.amazonaws.com/coins/ethereum) to access to our website.
