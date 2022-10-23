@@ -6,6 +6,11 @@
 
 ![](https://raw.githubusercontent.com/lenny-mo/PictureUploadFolder/main/Screen%20Shot%202022-10-23%20at%2011.47.20.png)
 
+## What is the OSCI?
+
+_Well, the most POWERFUL_ tool to let you get into Blockchains.
+
+
 <p align="center">
 <b>Open Source Crypto Insight</b> analyzes billions of data of crypto and gives a professional perspective based on these data. 
 </p>
@@ -13,10 +18,6 @@
 <p align="center">
 It also provides a bunch of utensils which can show different perspectives for different users, which will be detailed next section.
 </p>
-
-## What is the OSCI?
-
-_Well, the most POWERFUL_ tool to let you get into Blockchains.
 
 
 ## Feature1: Magic Dashboard👁️
